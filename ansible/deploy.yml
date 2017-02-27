@@ -1,0 +1,13 @@
+---
+# Run on all hosts
+- hosts: all
+
+  # Run all tasks with elevated privileges
+  become: True
+
+  # Select which roles to run
+  roles:
+    # Use common role without any variables
+    - common
+    # Use the apache role and set the apache_port variable
+    - { role: apache, apache_port: 80 }

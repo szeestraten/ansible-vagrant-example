@@ -1,0 +1,9 @@
+---
+# Install packages
+- name: Make sure common packages are installed
+  apt: name={{ item }}
+       state=present
+  with_items:
+    - vim
+    - tmux
+    - htop
