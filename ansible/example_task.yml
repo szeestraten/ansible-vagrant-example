@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Add CRAN 3.5 repository key
+    apt_key:
+      keyserver: "hkp://keyserver.ubuntu.com:80"
+      id: E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+  - name: Add CRAN 3.5 Xenial repository
+    apt_repository:
+      repo: "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/"
+      filename: xenial-cran35
+  
+  - name: Install r-base
+    apt:
+      name: r-base
